@@ -1,0 +1,16 @@
+<fieldset>
+    <legend>LOGIN</legend>
+    <form (ngSubmit)="login()">
+      <p>Email</p>
+      <input [(ngModel)]="email" type="email" name="email" id="email">
+      <p>Password</p>
+      <input [(ngModel)]="password" type="password" name="password" id="password">
+      <br>
+      <br>
+      <button type="submit">Login</button>
+    </form>
+    <br>
+    <span>
+        No account? <a routerLink="/signup">Signup here.</a>
+    </span>
+</fieldset>
