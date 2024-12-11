@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +12,14 @@ import { RouterLink } from '@angular/router';
 export class LoginComponent {
   @Input() email : string = ''; // user@email.com
   @Input() password : string = ''; // password
-  constructor(private authenticationService: AuthenticationService) {
-
+  constructor(private authenticationService: AuthenticationService, private router : Router) {
   }
 
   login() {
     if (this.authenticationService.userLoggedIn.email === this.email
       && this.authenticationService.userLoggedIn.password === this.password) {
-      alert("Login Successful!");  
+        this.router.navigate(['/profile']);
+        console.log("Login Successful!");  
     }
     
     else {
