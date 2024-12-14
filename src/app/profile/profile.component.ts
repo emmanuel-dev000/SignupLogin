@@ -14,20 +14,16 @@ export class ProfileComponent {
   ngOnInit() {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart && e.navigationTrigger === 'popstate') {
-        const confirmLogout = confirm('Do you want to logout?');
-        if (!confirmLogout) {
-          // Block navigation by re-pushing the current URL to the stack
-          history.pushState(null, '', window.location.href);
-  
-        }
+        this.router.navigate(['profile']);
       }
     });
-  
-    // Add an initial state to the history stack
-    history.pushState(null, '', window.location.href);
   }
 
   get usernameLoggedIn() {
     return this.authenticationService.userLoggedIn.email;
+  }
+
+  logout() {
+    this.router.navigate(['']);
   }
 }
